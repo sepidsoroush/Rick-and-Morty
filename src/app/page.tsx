@@ -13,11 +13,13 @@ export default function Home() {
   if (error) return <p>Error {error.message}</p>;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main>
       <header>
-        <h1 className="text-center m-5 text-xl">The Rick and Morty API</h1>
+        <h1 className="text-center my-5 text-4xl font-bold">
+          Rick and Morty GraphQL App
+        </h1>
       </header>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 p-2 md:p-4 mx-4 md:mx-8 ">
         {data?.characters?.results.map((character: any) => (
           <Card character={character} key={character.id} />
         ))}
