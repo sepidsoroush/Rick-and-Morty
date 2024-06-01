@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const Card = ({ character }: any) => {
@@ -14,7 +15,12 @@ const Card = ({ character }: any) => {
       />
 
       <div className="p-4 col-span-2">
-        <h5 className="text-lg font-semibold mb-2">{character.name}</h5>
+        <Link
+          className="text-lg font-semibold mb-2 hover:text-[#ff9800] transition-colors"
+          href={`/character/${character.id}`}
+        >
+          {character.name}
+        </Link>
         <div className="flex flex-row items-center">
           <span
             className={cn(
