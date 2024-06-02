@@ -4,3 +4,8 @@ export interface Info {
   next: string;
   prev: string;
 }
+
+export interface NavItem {
+  title: string;
+  href: string;
+}

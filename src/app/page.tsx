@@ -17,7 +17,7 @@ export default function Home() {
   const { info, results } = data.characters;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between mx-2 md:mx-24">
+    <main className="flex min-h-screen flex-col items-center justify-between">
       <header>
         <h1 className="text-center my-8 text-4xl font-bold">
           Rick and Morty GraphQL App

@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { ApolloWrapper } from "@/lib/apollo-wrapper";
+import { Navbar } from "@/components/layout/navbar";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +20,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={inter.className}>
-        <ApolloWrapper>{children}</ApolloWrapper>
+      <body
+        suppressHydrationWarning={true}
+        className={cn(
+          "text-black bg-white dark:text-white dark:bg-[#121212] max-w-5xl mx-4 lg:mx-auto",
+          inter.className
+        )}
+      >
+        <ApolloWrapper>
+          <Navbar />
+          {children}
+        </ApolloWrapper>
       </body>
     </html>
   );
