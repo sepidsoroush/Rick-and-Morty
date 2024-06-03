@@ -61,7 +61,9 @@ function LocationPage({ params }: { params: { id: string } }) {
           <InfoCard emoji="✨" title="Dimension" content={location.dimension} />
         </Card>
         <Separator />
-        <CardDescription>Residents</CardDescription>
+        <CardDescription>
+          Residents ({location.residents.length})
+        </CardDescription>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {location.residents.map((item: Character) => (
             <Card key={item.id}>
