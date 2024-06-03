@@ -21,34 +21,42 @@ function CharacterDetail({ params }: { params: { id: string } }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;
 
+  const character = data.character;
+
   return (
     <Card className="w-full overflow-hidden my-4">
       <CardContent className="flex flex-col md:flex-row justify-center md:justify-start gap-2 p-4">
         <Image
-          src={data.character.image}
+          src={character.image}
           className="object-cover rounded-lg"
           alt="character"
           width={300}
           height={300}
           priority
         />
-
         <div className="p-2 gap-2">
           <CardTitle className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl mb-4">
-            {data.character.name}
+            {character.name}
           </CardTitle>
           <CardDescription>Info</CardDescription>
-          <InfoCard emoji="🟢" title="Status" content={data.character.status} />
           <InfoCard
-            emoji="🧬"
-            title="Species"
-            content={data.character.species}
+            emoji={
+              character.status === "Alive"
+                ? "🟢"
+                : character.status === "Dead"
+                ? "🔴"
+                : "⚫"
+            }
+            title="Status"
+            content={character.status}
           />
-          <InfoCard emoji="👤" title="Gender" content={data.character.gender} />
+          <InfoCard emoji="🧬" title="Species" content={character.species} />
+          <InfoCard emoji="👤" title="Gender" content={character.gender} />
+          <InfoCard emoji="🏠" title="Origin" content={character.origin.name} />
           <InfoCard
             emoji="📍"
             title="Location"
-            content={data.character.location.name}
+            content={character.location.name}
           />
         </div>
       </CardContent>

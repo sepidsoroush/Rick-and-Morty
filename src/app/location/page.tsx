@@ -21,7 +21,6 @@ const LocationPage = () => {
       <div>
         <header>
           <h1 className="text-center my-8 text-4xl font-bold">
-            {" "}
             Rick and Morty Locations
           </h1>
         </header>

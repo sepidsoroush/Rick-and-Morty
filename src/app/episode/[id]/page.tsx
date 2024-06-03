@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-
+import InfoCard from "@/components/Info-card";
 import { ChevronRight } from "lucide-react";
 
 function EpisodeDetail({ params }: { params: { id: string } }) {
@@ -26,31 +26,23 @@ function EpisodeDetail({ params }: { params: { id: string } }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {error.message}</p>;
 
+  const episode = data.episode;
+
   return (
     <Card className="w-full overflow-hidden my-4">
       <CardHeader className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
-        <CardTitle>{data.episode.name}</CardTitle>
+        <CardTitle>{episode.name}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2 md:gap-4">
         <CardDescription>Info</CardDescription>
         <Card className="grid grid-cols-1 md:grid-cols-2 p-2 gap-3">
-          <div className="flex flex-row items-center">
-            <p className="text-base font-medium text-gray-700">📺 Episode: </p>
-            <p className="text-base font-semibold text-[#ff9800] pl-1">
-              {data.episode.episode}
-            </p>
-          </div>
-          <div className="flex flex-row items-center">
-            <p className="text-base font-medium text-gray-700">📅 Air date:</p>
-            <p className="text-base font-semibold text-[#ff9800]  pl-1">
-              {data.episode.air_date}
-            </p>
-          </div>
+          <InfoCard emoji="📺" title="Episode" content={episode.episode} />
+          <InfoCard emoji="📅" title="Air date" content={episode.air_date} />
         </Card>
         <Separator />
         <CardDescription>Characters</CardDescription>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {data.episode.characters.map((item: any) => (
+          {episode.characters.map((item: any) => (
             <Card key={item.id}>
               <Link
                 href={`/character/${item.id}`}
@@ -69,7 +61,6 @@ function EpisodeDetail({ params }: { params: { id: string } }) {
                     {item.name}
                   </p>
                 </div>
-
                 <ChevronRight />
               </Link>
             </Card>

@@ -28,6 +28,9 @@ const GET_CHARACTER_BY_ID = gql`
       status
       image
       species
+      origin {
+        name
+      }
       location {
         id
         name
