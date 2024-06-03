@@ -9,7 +9,10 @@ type Props = {
 
 const CharacterCard = ({ character }: Props) => {
   return (
-    <div className="rounded-lg overflow-hidden shadow-lg">
+    <Link
+      href={`/character/${character.id}`}
+      className="group rounded-lg overflow-hidden shadow-lg"
+    >
       <Image
         src={character.image}
         className="w-full object-cover"
@@ -18,10 +21,7 @@ const CharacterCard = ({ character }: Props) => {
         height={300}
         priority
       />
-      <Link
-        className="group flex flex-col md:flex-row justify-between items-center box-border p-2"
-        href={`/character/${character.id}`}
-      >
+      <div className="flex flex-col md:flex-row justify-between items-center box-border p-2 transition ease-in-out group-hover:-translate-y-2 bg-white">
         <p className="text-sm font-medium group-hover:text-[#ff9800] transition-colors truncate">
           {character.name}
         </p>
@@ -40,8 +40,8 @@ const CharacterCard = ({ character }: Props) => {
             {character.status} - {character.species}
           </p>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 
