@@ -43,4 +43,23 @@ const GET_CHARACTER_BY_ID = gql`
   }
 `;
 
-export { GET_ALL_CHARACTERS, GET_CHARACTER_BY_ID };
+const GET_ALL_LOCATIONS = gql`
+  query Location($page: Int) {
+    locations(page: $page) {
+      info {
+        count
+        pages
+        next
+        prev
+      }
+      results {
+        id
+        name
+        type
+        dimension
+      }
+    }
+  }
+`;
+
+export { GET_ALL_CHARACTERS, GET_CHARACTER_BY_ID, GET_ALL_LOCATIONS };
