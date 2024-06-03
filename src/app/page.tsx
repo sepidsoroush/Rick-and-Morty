@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_CHARACTERS } from "@/lib/queries";
-import Card from "@/components/card";
+import CharacterCard from "@/components/character-card";
 import CustomPagination from "@/components/layout/pagination";
 
 export default function Home() {
@@ -23,9 +23,9 @@ export default function Home() {
           Rick and Morty Characters
         </h1>
       </header>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
         {results.map((character: any) => (
-          <Card character={character} key={character.id} />
+          <CharacterCard character={character} key={character.id} />
         ))}
       </div>
       <CustomPagination
