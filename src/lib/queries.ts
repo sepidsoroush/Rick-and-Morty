@@ -15,9 +15,6 @@ const GET_ALL_CHARACTERS = gql`
         image
         status
         species
-        location {
-          name
-        }
       }
     }
   }
@@ -30,14 +27,10 @@ const GET_CHARACTER_BY_ID = gql`
       gender
       status
       image
-      created
       species
-      origin {
-        name
-      }
       location {
+        id
         name
-        type
       }
     }
   }

@@ -3,8 +3,15 @@ import Image from "next/image";
 import { useQuery } from "@apollo/client";
 import { GET_CHARACTER_BY_ID } from "@/lib/queries";
 import { cn } from "@/lib/utils";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+} from "@/components/ui/card";
+import InfoCard from "@/components/Info-card";
 
-function CharacterPage({ params }: { params: { id: string } }) {
+function CharacterDetail({ params }: { params: { id: string } }) {
   const { id } = params;
 
   const { data, error, loading } = useQuery(GET_CHARACTER_BY_ID, {
@@ -15,70 +22,38 @@ function CharacterPage({ params }: { params: { id: string } }) {
   if (error) return <p>Error {error.message}</p>;
 
   return (
-    <>
-      {data ? (
-        <div className="flex flex-col md:flex-row items-center md:items-start p-4 m-4 shadow-md rounded-lg overflow-hidden">
-          <Image
-            src={data.character.image}
-            className="object-cover rounded-lg"
-            alt="character"
-            width={300}
-            height={300}
-            priority
-          />
-          <div className="space-y-2 pl-4">
-            <h1 className="text-2xl font-bold my-4">{data.character.name}</h1>
+    <Card className="w-full overflow-hidden my-4">
+      <CardContent className="flex flex-col md:flex-row justify-center md:justify-start gap-2 p-4">
+        <Image
+          src={data.character.image}
+          className="object-cover rounded-lg"
+          alt="character"
+          width={300}
+          height={300}
+          priority
+        />
 
-            <h3 className="text-md">
-              Status:{" "}
-              <span
-                className={cn(
-                  data.character.status === "Alive"
-                    ? "text-green-500"
-                    : data.character.status === "Dead"
-                    ? "text-red-500"
-                    : "text-gray-500",
-                  "font-semibold"
-                )}
-              >
-                {data.character.status}
-              </span>
-            </h3>
-            <h3 className="text-md">
-              Gender:{" "}
-              <span className="font-semibold">{data.character.gender}</span>
-            </h3>
-            <h3 className="text-md">
-              Species:{" "}
-              <span className="font-semibold">{data.character.species}</span>
-            </h3>
-            <h4 className="text-md">
-              Origin:{" "}
-              <span className="font-semibold">
-                {data.character.origin.name}
-              </span>
-            </h4>
-            <h4 className="text-md">
-              Location Type:{" "}
-              <span className="font-semibold">
-                {data.character.location.type}
-              </span>
-            </h4>
-            <h5 className="text-md">
-              Last seen location:{" "}
-              <span className="font-semibold">
-                {data.character.location.name}
-              </span>
-            </h5>
-          </div>
+        <div className="p-2 gap-2">
+          <CardTitle className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl mb-4">
+            {data.character.name}
+          </CardTitle>
+          <CardDescription>Info</CardDescription>
+          <InfoCard emoji="🟢" title="Status" content={data.character.status} />
+          <InfoCard
+            emoji="🧬"
+            title="Species"
+            content={data.character.species}
+          />
+          <InfoCard emoji="👤" title="Gender" content={data.character.gender} />
+          <InfoCard
+            emoji="📍"
+            title="Location"
+            content={data.character.location.name}
+          />
         </div>
-      ) : (
-        <p className="text-center text-gray-500">
-          Fetching data for the clicked item...
-        </p>
-      )}
-    </>
+      </CardContent>
+    </Card>
   );
 }
 
-export default CharacterPage;
+export default CharacterDetail;
