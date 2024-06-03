@@ -15,6 +15,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import InfoCard from "@/components/Info-card";
 import { ChevronRight } from "lucide-react";
+import { Character } from "@/types";
 
 function EpisodeDetail({ params }: { params: { id: string } }) {
   const { id } = params;
@@ -42,7 +43,7 @@ function EpisodeDetail({ params }: { params: { id: string } }) {
         <Separator />
         <CardDescription>Characters</CardDescription>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {episode.characters.map((item: any) => (
+          {episode.characters.map((item: Character) => (
             <Card key={item.id}>
               <Link
                 href={`/character/${item.id}`}

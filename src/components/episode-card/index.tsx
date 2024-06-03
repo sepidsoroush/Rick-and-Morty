@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
+import { Episode } from "@/types";
 
-const EpisodeCard = ({ episode }: any) => {
+type Props = {
+  episode: Episode;
+};
+
+const EpisodeCard = ({ episode }: Props) => {
   return (
     <Card>
       <Link

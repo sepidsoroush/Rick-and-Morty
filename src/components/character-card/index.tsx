@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Character } from "@/types";
 
-const CharacterCard = ({ character }: any) => {
+type Props = {
+  character: Character;
+};
+
+const CharacterCard = ({ character }: Props) => {
   return (
     <div className="rounded-lg overflow-hidden shadow-lg">
       <Image

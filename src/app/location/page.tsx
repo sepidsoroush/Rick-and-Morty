@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_LOCATIONS } from "@/lib/queries";
 import LocationCard from "@/components/location-card";
 import CustomPagination from "@/components/layout/pagination";
+import { Location } from "@/types";
 
 const LocationPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -25,12 +26,8 @@ const LocationPage = () => {
           </h1>
         </header>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
-          {results.map((location: any) => (
-            <LocationCard
-              key={location.id}
-              location={location}
-              className="text-base text-gray-700"
-            />
+          {results.map((location: Location) => (
+            <LocationCard key={location.id} location={location} />
           ))}
         </div>
       </div>

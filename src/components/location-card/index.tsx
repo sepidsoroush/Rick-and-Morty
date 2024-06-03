@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
+import { Location } from "@/types";
 
-const LocationCard = ({ location }: any) => {
+type Props = {
+  location: Location;
+};
+
+const LocationCard = ({ location }: Props) => {
   return (
     <Card>
       <Link

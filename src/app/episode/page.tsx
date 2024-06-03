@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_EPISODES } from "@/lib/queries";
 import CustomPagination from "@/components/layout/pagination";
 import EpisodeCard from "@/components/episode-card";
+import { Episode } from "@/types";
 
 const EpisodePage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -24,13 +25,9 @@ const EpisodePage = () => {
             Rick and Morty Episodes
           </h1>
         </header>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
-          {results.map((episode: any) => (
-            <EpisodeCard
-              key={episode.id}
-              episode={episode}
-              className="text-base text-gray-700"
-            />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 text-base text-gray-700">
+          {results.map((episode: Episode) => (
+            <EpisodeCard key={episode.id} episode={episode} />
           ))}
         </div>
       </div>
