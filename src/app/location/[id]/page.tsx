@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-
-import { useQuery } from "@apollo/client";
-import { GET_LOCATION_BY_ID } from "@/lib/queries";
+import { gql, useQuery } from "@apollo/client";
 import {
   Card,
   CardContent,
@@ -17,6 +15,22 @@ import InfoCard from "@/components/Info-card";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { ChevronRight } from "lucide-react";
 import { Character } from "@/types";
+
+const GET_LOCATION_BY_ID = gql`
+  query Location($id: ID!) {
+    location(id: $id) {
+      id
+      name
+      type
+      dimension
+      residents {
+        id
+        name
+        image
+      }
+    }
+  }
+`;
 
 function LocationPage({ params }: { params: { id: string } }) {
   const { id } = params;

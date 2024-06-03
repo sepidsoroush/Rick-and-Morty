@@ -1,11 +1,29 @@
 "use client";
 import { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_ALL_LOCATIONS } from "@/lib/queries";
+import { gql, useQuery } from "@apollo/client";
 import LocationCard from "@/components/location-card";
 import CustomPagination from "@/components/layout/pagination";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { Location } from "@/types";
+
+const GET_ALL_LOCATIONS = gql`
+  query Location($page: Int) {
+    locations(page: $page) {
+      info {
+        count
+        pages
+        next
+        prev
+      }
+      results {
+        id
+        name
+        type
+        dimension
+      }
+    }
+  }
+`;
 
 const LocationPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);

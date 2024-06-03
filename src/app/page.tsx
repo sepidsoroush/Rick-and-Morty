@@ -1,11 +1,30 @@
 "use client";
 import { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_ALL_CHARACTERS } from "@/lib/queries";
+import { gql, useQuery } from "@apollo/client";
 import CharacterCard from "@/components/character-card";
 import CustomPagination from "@/components/layout/pagination";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { Character } from "@/types";
+
+const GET_ALL_CHARACTERS = gql`
+  query Character($page: Int) {
+    characters(page: $page) {
+      info {
+        count
+        pages
+        next
+        prev
+      }
+      results {
+        id
+        name
+        image
+        status
+        species
+      }
+    }
+  }
+`;
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState<number>(1);

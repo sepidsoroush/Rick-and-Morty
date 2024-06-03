@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useQuery } from "@apollo/client";
-import { GET_CHARACTER_BY_ID } from "@/lib/queries";
+import { gql, useQuery } from "@apollo/client";
 import {
   Card,
   CardContent,
@@ -10,6 +9,25 @@ import {
 } from "@/components/ui/card";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import InfoCard from "@/components/Info-card";
+
+const GET_CHARACTER_BY_ID = gql`
+  query Character($id: ID!) {
+    character(id: $id) {
+      name
+      gender
+      status
+      image
+      species
+      origin {
+        name
+      }
+      location {
+        id
+        name
+      }
+    }
+  }
+`;
 
 function CharacterDetail({ params }: { params: { id: string } }) {
   const { id } = params;

@@ -1,11 +1,29 @@
 "use client";
 import { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_ALL_EPISODES } from "@/lib/queries";
+import { gql, useQuery } from "@apollo/client";
 import CustomPagination from "@/components/layout/pagination";
 import EpisodeCard from "@/components/episode-card";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { Episode } from "@/types";
+
+const GET_ALL_EPISODES = gql`
+  query Episode($page: Int) {
+    episodes(page: $page) {
+      info {
+        count
+        pages
+        next
+        prev
+      }
+      results {
+        id
+        name
+        air_date
+        episode
+      }
+    }
+  }
+`;
 
 const EpisodePage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);

@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-
-import { useQuery } from "@apollo/client";
-import { GET_EPISODE_BY_ID } from "@/lib/queries";
+import { gql, useQuery } from "@apollo/client";
 import {
   Card,
   CardContent,
@@ -17,6 +15,22 @@ import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import InfoCard from "@/components/Info-card";
 import { ChevronRight } from "lucide-react";
 import { Character } from "@/types";
+
+const GET_EPISODE_BY_ID = gql`
+  query Episode($id: ID!) {
+    episode(id: $id) {
+      id
+      name
+      air_date
+      episode
+      characters {
+        id
+        name
+        image
+      }
+    }
+  }
+`;
 
 function EpisodeDetail({ params }: { params: { id: string } }) {
   const { id } = params;
