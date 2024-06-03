@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_EPISODES } from "@/lib/queries";
 import CustomPagination from "@/components/layout/pagination";
 import EpisodeCard from "@/components/episode-card";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { Episode } from "@/types";
 
 const EpisodePage = () => {
@@ -12,7 +13,12 @@ const EpisodePage = () => {
     variables: { page: currentPage },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="w-full h-screen flex items-center place-content-center">
+        <LoadingSpinner />
+      </div>
+    );
   if (error) return <p>Error {error.message}</p>;
 
   const { info, results } = data.episodes;

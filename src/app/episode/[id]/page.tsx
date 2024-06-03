@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import InfoCard from "@/components/Info-card";
 import { ChevronRight } from "lucide-react";
 import { Character } from "@/types";
@@ -24,7 +25,12 @@ function EpisodeDetail({ params }: { params: { id: string } }) {
     variables: { id },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="w-full h-screen flex items-center place-content-center">
+        <LoadingSpinner />
+      </div>
+    );
   if (error) return <p>Error {error.message}</p>;
 
   const episode = data.episode;

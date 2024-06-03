@@ -2,13 +2,13 @@
 import Image from "next/image";
 import { useQuery } from "@apollo/client";
 import { GET_CHARACTER_BY_ID } from "@/lib/queries";
-import { cn } from "@/lib/utils";
 import {
   Card,
   CardContent,
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import InfoCard from "@/components/Info-card";
 
 function CharacterDetail({ params }: { params: { id: string } }) {
@@ -18,7 +18,12 @@ function CharacterDetail({ params }: { params: { id: string } }) {
     variables: { id },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="w-full h-screen flex items-center place-content-center">
+        <LoadingSpinner />
+      </div>
+    );
   if (error) return <p>Error {error.message}</p>;
 
   const character = data.character;
