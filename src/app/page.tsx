@@ -20,7 +20,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between">
       <header>
         <h1 className="text-center my-8 text-4xl font-bold">
-          Rick and Morty GraphQL App
+          Rick and Morty Characters
         </h1>
       </header>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">

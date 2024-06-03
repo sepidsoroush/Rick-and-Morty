@@ -62,4 +62,25 @@ const GET_ALL_LOCATIONS = gql`
   }
 `;
 
-export { GET_ALL_CHARACTERS, GET_CHARACTER_BY_ID, GET_ALL_LOCATIONS };
+const GET_LOCATION_BY_ID = gql`
+  query Location($id: ID!) {
+    location(id: $id) {
+      id
+      name
+      type
+      dimension
+      residents {
+        id
+        name
+        image
+      }
+    }
+  }
+`;
+
+export {
+  GET_ALL_CHARACTERS,
+  GET_CHARACTER_BY_ID,
+  GET_ALL_LOCATIONS,
+  GET_LOCATION_BY_ID,
+};
