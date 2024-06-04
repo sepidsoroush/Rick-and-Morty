@@ -3,7 +3,6 @@
 import Link from "next/link";
 
 import { NavItem } from "@/types";
-import { cn } from "@/lib/utils";
 import { Logo } from "@/lib/logo";
 
 const items: NavItem[] = [
@@ -18,10 +17,6 @@ const items: NavItem[] = [
   {
     title: "Episodes",
     href: "/episode",
-  },
-  {
-    title: "API",
-    href: "https://rickandmortyapi.com/",
   },
 ];
 
