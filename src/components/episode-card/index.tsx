@@ -12,14 +12,16 @@ const EpisodeCard = ({ episode }: Props) => {
     <Card>
       <Link
         href={`/episode/${episode.id}`}
-        className="w-full flex flex-row justify-between items-center p-4"
+        className="w-full flex flex-row justify-between items-center md:p-4 p-2"
       >
-        <div className="text-base text-gray-700">
+        <div className="text-sm md:text-base text-gray-700">
           <div className="flex flex-row font-bold">
             <span className="font-medium">{episode.episode}</span>&nbsp;-&nbsp;
             <span>{episode.name}</span>
           </div>
-          <p className="text-sm">{episode.air_date}</p>
+          <p className="text-xs md:text-sm text-gray-500 font-light pt-1">
+            {episode.air_date}
+          </p>
         </div>
         <ChevronRight />
       </Link>

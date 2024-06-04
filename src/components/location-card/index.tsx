@@ -12,7 +12,7 @@ const LocationCard = ({ location }: Props) => {
     <Card>
       <Link
         href={`/location/${location.id}`}
-        className="w-full flex flex-row justify-between items-center p-4"
+        className="w-full flex flex-row justify-between items-center md:p-4 p-2"
       >
         <div>
           <p className="text-base text-gray-700 font-bold">{location.name}</p>

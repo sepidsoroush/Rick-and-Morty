@@ -59,17 +59,17 @@ function CharacterDetail({ params }: { params: { id: string } }) {
 
   return (
     <Card className="w-full overflow-hidden my-4">
-      <CardContent className="grid grid-cols-1 md:grid-cols-3 justify-center md:justify-start gap-2 p-4">
+      <CardContent className="grid grid-cols-1 md:grid-cols-3 justify-center md:justify-start gap-2 md:p-4 p-1">
         <Image
           src={character.image}
-          className="object-contain rounded-lg items-start"
+          className="object-contain rounded-lg place-self-center md:place-self-start"
           alt="character"
           width={300}
           height={300}
           priority
         />
         <div className="p-2 gap-2 col-span-2">
-          <CardTitle className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl mb-4">
+          <CardTitle className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl my-2">
             {character.name}
           </CardTitle>
           <CardDescription>Info</CardDescription>
@@ -88,52 +88,20 @@ function CharacterDetail({ params }: { params: { id: string } }) {
           <InfoCard emoji="👤" title="Gender" content={character.gender} />
 
           <CardDescription>Location</CardDescription>
-          {character.origin.id ? (
-            <Link
-              href={`/location/${character.origin.id}`}
-              className="flex flex-row justify-start items-center group"
-            >
-              <InfoCard
-                emoji="🏠"
-                title="Origin"
-                content={character.origin.name}
-                className="group-hover:text-[#ff9800]"
-              />
-              <ExternalLink
-                size={18}
-                className="ml-1 transition-all group-hover:text-[#ff9800] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </Link>
-          ) : (
-            <InfoCard
-              emoji="🏠"
-              title="Origin"
-              content={character.origin.name}
-            />
-          )}
-          {character.location.id ? (
-            <Link
-              href={`/location/${character.location.id}`}
-              className="flex flex-row justify-start items-center group"
-            >
-              <InfoCard
-                emoji="📍"
-                title="Last known location"
-                content={character.location.name}
-                className="group-hover:text-[#ff9800]"
-              />
-              <ExternalLink
-                size={18}
-                className="ml-1 transition-all group-hover:text-[#ff9800] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </Link>
-          ) : (
-            <InfoCard
-              emoji="📍"
-              title="Last known location"
-              content={character.location.name}
-            />
-          )}
+          <InfoCard
+            emoji="🏠"
+            title="Origin"
+            content={character.origin.name}
+            className="group-hover:text-[#ff9800] whitespace-nowrap"
+            link={character.origin.id && `/location/${character.origin.id}`}
+          />
+          <InfoCard
+            emoji="📍"
+            title="Last location"
+            content={character.location.name}
+            className="group-hover:text-[#ff9800] truncate"
+            link={character.location.id && `/location/${character.location.id}`}
+          />
 
           <CardDescription>
             Episodes ({character.episode.length})

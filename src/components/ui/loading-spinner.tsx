@@ -5,7 +5,7 @@ export interface ISVGProps extends React.SVGProps<SVGSVGElement> {
 }
 
 export const LoadingSpinner = ({
-  size = 96,
+  size = 48,
   className,
   ...props
 }: ISVGProps) => {
