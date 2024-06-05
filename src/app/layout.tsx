@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         suppressHydrationWarning={true}
         className={cn(
-          "text-black bg-white dark:text-white dark:bg-[#121212] max-w-5xl mx-2 lg:mx-auto",
+          "text-black bg-white dark:text-white dark:bg-[#121212] max-w-5xl mx-2 lg:mx-auto min-h-screen",
           inter.className
         )}
       >

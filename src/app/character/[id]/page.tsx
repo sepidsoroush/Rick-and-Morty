@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
 import {
   Card,
@@ -12,7 +11,6 @@ import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import InfoCard from "@/components/Info-card";
 import EpisodeCard from "@/components/episode-card";
 import { Episode } from "@/types";
-import { ExternalLink } from "lucide-react";
 
 const GET_CHARACTER_BY_ID = gql`
   query Character($id: ID!) {
@@ -58,7 +56,7 @@ function CharacterDetail({ params }: { params: { id: string } }) {
   const character = data.character;
 
   return (
-    <Card className="w-full overflow-hidden my-4">
+    <Card className="w-full overflow-hidden my-4 h-full">
       <CardContent className="grid grid-cols-1 md:grid-cols-3 justify-center md:justify-start gap-2 md:p-4 p-1">
         <Image
           src={character.image}
@@ -69,7 +67,7 @@ function CharacterDetail({ params }: { params: { id: string } }) {
           priority
         />
         <div className="p-2 gap-2 col-span-2">
-          <CardTitle className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl my-2">
+          <CardTitle className="scroll-m-20 font-extrabold tracking-tight text-2xl md:text-3xl">
             {character.name}
           </CardTitle>
           <CardDescription>Info</CardDescription>
@@ -92,14 +90,12 @@ function CharacterDetail({ params }: { params: { id: string } }) {
             emoji="🏠"
             title="Origin"
             content={character.origin.name}
-            className="group-hover:text-[#ff9800] whitespace-nowrap"
             link={character.origin.id && `/location/${character.origin.id}`}
           />
           <InfoCard
             emoji="📍"
             title="Last location"
             content={character.location.name}
-            className="group-hover:text-[#ff9800] truncate"
             link={character.location.id && `/location/${character.location.id}`}
           />
 

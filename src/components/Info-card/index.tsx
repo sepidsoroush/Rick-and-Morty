@@ -49,7 +49,7 @@ const InfoCard = ({
       />
     </Link>
   ) : (
-    cardContent
+    <div className="flex flex-row items-center">{cardContent}</div>
   );
 };
 

@@ -2,8 +2,8 @@ import { Logo } from "@/lib/logo";
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="flex flex-col md:flex-row items-center md:gap-2 md:px-0 my-4">
+    <footer className="sticky top-[100vh] my-4">
+      <div className="flex flex-col md:flex-row items-center md:gap-2 md:px-0">
         <span className="hidden md:inline-block">
           <Logo />
         </span>

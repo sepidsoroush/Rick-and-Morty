@@ -11,7 +11,7 @@ const CharacterCard = ({ character }: Props) => {
   return (
     <Link
       href={`/character/${character.id}`}
-      className="group rounded-lg overflow-hidden shadow-lg"
+      className="group rounded-lg overflow-hidden shadow-lg w-full"
     >
       <Image
         src={character.image}
@@ -22,10 +22,10 @@ const CharacterCard = ({ character }: Props) => {
         priority
       />
       <div className="flex flex-col md:flex-row justify-between items-center box-border p-2 transition ease-in-out group-hover:-translate-y-2 bg-white">
-        <p className="text-sm font-medium group-hover:text-[#ff9800] transition-colors truncate">
+        <p className="text-xs md:text-sm font-medium group-hover:text-[#ff9800] transition-colors truncate">
           {character.name}
         </p>
-        <div className="flex flex-row items-center text-xs truncate">
+        <div className="flex flex-row items-center text-[10px] md:text-xs">
           <span
             className={cn(
               "h-2 w-2 rounded-full mr-1",
@@ -36,7 +36,7 @@ const CharacterCard = ({ character }: Props) => {
                 : "bg-gray-300"
             )}
           ></span>
-          <p className="text-gray-700">
+          <p className="text-gray-700 truncate">
             {character.status} - {character.species}
           </p>
         </div>

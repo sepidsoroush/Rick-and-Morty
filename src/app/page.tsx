@@ -45,8 +45,8 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <header>
-        <h1 className="text-center my-8 text-4xl font-bold">
-          Rick and Morty Characters
+        <h1 className="text-center my-4 md:my-8 text-2xl md:text-3xl font-bold">
+          Characters
         </h1>
       </header>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 text-base text-gray-700">

@@ -51,8 +51,9 @@ function LocationPage({ params }: { params: { id: string } }) {
 
   return (
     <Card className="w-full overflow-hidden my-4">
-      <CardHeader className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl my-2">
-        <CardTitle>{location.name}</CardTitle>
+      <CardHeader className="scroll-m-20 tracking-tight text-2xl md:text-3xl">
+        <CardDescription>Location name</CardDescription>
+        <CardTitle className="font-extrabold">{location.name}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2 md:gap-4">
         <CardDescription>Info</CardDescription>

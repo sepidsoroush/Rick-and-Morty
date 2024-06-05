@@ -45,8 +45,8 @@ const LocationPage = () => {
     <section className="flex flex-col justify-between h-full">
       <div>
         <header>
-          <h1 className="text-center my-8 text-4xl font-bold">
-            Rick and Morty Locations
+          <h1 className="text-center my-4 md:my-8 text-2xl md:text-3xl font-bold">
+            Locations
           </h1>
         </header>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
