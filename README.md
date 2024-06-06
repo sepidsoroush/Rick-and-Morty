@@ -1,4 +1,4 @@
-# Rick and Morty app (GraphQL+React)
+# Rick and Morty app: GraphQL+React learning project
 
 The Rick and Morty application is made with GraphQL API and Next.js, based on the television show **Rick and Morty**. You can find hundreds of characters, locations and episodes. [Live demo:](https://rick-and-morty-self-ten.vercel.app/)
 
